@@ -1,0 +1,29 @@
+<div class="content">
+    <input type="text" ng-model="meat" placeholder = "put meats here">
+    <h3>I like {{ meat }}</h3>
+   
+  
+      <button ng-click=" order = 'name'" style="float:left;">Order by Name</button>
+      <button ng-click="order = 'job'" style="float:right;">Order by Job</button>
+      <input type="text" ng-model="search" placeholder = "search for friends">
+      <h1>{{ msg }}</h1>
+      <ul id="friends-list">
+        <li ng-repeat="friend in friends | orderBy: order | filter:search" ng-show="friend.available">
+          <img ng-src="{{friend.image}}" alt="image Friend" style="margin: -10px 10px 0 0; float:left; width:50px; border-radius:50%;"
+               ng-show="friend.image"/>
+          <h3>{{ friend.name }} - {{ friend.money | currency: ' € '}}</h3>
+          
+          <div class="remove" ng-click="removeFriend(friend)">x</div>
+          
+          <span class="belt">Job title: {{ friend.job }}</span>
+          </li>
+      </ul>
+      <form ng-submit="addFriend() ">
+        <input type="text" placeholder="name" ng-model="newFriend.name">
+        <input type="text" placeholder="job"  ng-model="newFriend.job">
+        <input type="text" placeholder="money"  ng-model="newFriend.money">
+        <input type="submit" value="Add New Friend">
+      </form>
+      <a href="" ng-click="removeAll()">Remove all friends</a>
+     </div> 
+    
